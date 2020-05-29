@@ -1,0 +1,578 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+h1{
+	text-align: center;
+}
+
+/*============= Параметри ігрового поля ============*/
+#game_field{
+	width: 90%;
+	height: 650px;
+	border: 1px solid #000;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+}
+
+/*============= Задній фон під кнопкою "Пуск" (Start), на якій пролітає літак з StartPlane */
+#start_game {
+    width: 100%;/*100%;*/
+    height: 1080px;
+    background-image: url(../img/StartBlock/StartBg.png);
+    background-size: 100%;
+    background-position: 0 -60px;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0px;
+    left: 0;
+}
+
+/*============= Статична версія кнопки "Пуск" (Start), яка після кліку по ній має змінюватись GIF-анімацією */
+#start_button {
+	width: 150px;
+	height: 150px;
+    background-image: url(../img/StartBlock/StartButton.gif);
+    margin: 450px auto;
+    background-size: contain;
+    cursor: pointer;
+    outline: none;
+}
+
+/*============= Анімація літака на стартовому екрані */
+#start_plane {
+    width: 40px;
+    height: 30px;
+    background-image: url(../img/StartBlock/StartPlane1.gif);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 300px;
+    left: 1600px;
+    transition: 3s all;
+}
+
+/*============= Блок з інформацією про елементи управління (вспливаюче вікно зліва) */
+#controls {
+    top: 300px;
+    left: -100px;
+	width: 0px;
+	height: 0px;
+    background-image: url(../img/GameField/KeyControls.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    outline: none;
+    transition: 2s all;
+    z-index: 6;
+}
+
+/*============= Анімація падіння літака на кінцевому екрані */
+#game_over{
+	width: 100%;
+    height: 1080px;
+    background-image: url(../img/StartEndScreens/GameOver.gif);
+    background-size: 100%;
+    background-position: 0 -200px;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+/*============= Кнопка "ReStart" */
+#restart_button{
+	width: 150px;
+	height: 150px;
+    background-image: url(../img/StartBlock/ReStartButton.png);
+    margin: 450px auto;
+    background-size: 100%;
+    cursor: pointer;
+    outline: none;
+}
+
+/*============= Текстове повідомлення про завершення гри */
+#game_over_text,
+#game_over_reason,
+#occassion{
+	z-index: 3;
+	color: yellow;
+	font-size: 60px;
+	font-family: 'Exo 2', sans-serif;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+}
+
+/*============== Текстові стрічки про завершення гри */
+#game_over_text{
+	top: 140px;
+}
+#game_over_reason{
+	top: 205px;
+}
+#occassion{
+    top: 265px;
+}
+
+/*============== Суцільний колір неба на задньому фоні */
+#backgroundSky{
+	width: 100%;
+	height: 100%;
+	background-color: rgb(110, 172, 194);
+	position: relative;
+}
+
+/*============= БОНУС "поповнення палива" =========== FuelTank1.gif */ 
+.fuel_tank{
+	width: 70px;
+	height: 70px;
+	background-image: url(../img/Bonuses/FuelTank.gif);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	z-index: 6;
+}
+
+/*============= БОНУС "поповнення здоров'я" =========*/
+.health_restore{
+	width: 40px;
+	height: 40px;
+	background-image: url(../img/Bonuses/Health.gif);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	z-index: 6;
+}
+
+/*============= БОНУС "монета" ======================*/
+.coin{
+	width: 40px;
+	height: 40px;
+	background-image: url(../img/Bonuses/Coin.gif);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	z-index: 6;
+}
+
+/*============= БОНУС "зірочка" =====================*/
+.star{
+	width: 65px;
+	height: 65px;
+	background-image: url(../img/Bonuses/Star.gif);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	z-index: 6;
+}
+
+/*============= БОНУС "діамант" =====================*/
+.diamond{
+	width: 60px;
+	height: 60px;
+	background-image: url(../img/Bonuses/Diamond.gif);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	z-index: 6;
+}
+
+/*============= ОБ'ЄКТ "хмара проста" ==================*/
+.cloud_common{
+	width: 132px;
+	height: 70px;
+	background-image: url(../img/Clouds/Cloud2.gif);
+	background-size: 100%;
+	z-index: 6;	
+	position: absolute;
+}
+
+/*============= ОБ'ЄКТ "хмара грозова" ================*/
+.cloud_thunderstorm{
+    width: 132px;
+    height: 120px;
+    background-image: url(../img/Clouds/Cloud1.gif);
+    background-size: 100%;
+    z-index: 6; 
+    position: absolute;
+}
+
+/*============= ОБ'ЄКТ "дирижабль" ===================*/
+.air_ship{
+	width: 150px;
+	height: 71px;
+	background-image: url(../img/SkyObjects/AirShip.png);
+	background-size: 100%;
+	z-index: 6;	
+	background-repeat: no-repeat;
+	position: absolute;
+}
+
+/*============= ОБ'ЄКТ "повітряна куля" ==============*/
+.balloon{
+    width: 90px;
+    height: 150px;
+    background-image: url(../img/SkyObjects/Balloon.png);
+    background-size: 100%;
+    z-index: 6; 
+    background-repeat: no-repeat;
+    position: absolute;
+}
+
+/*============= ОБ'ЄКТ "птахи" =======================*/
+.birds{
+    width: 90px;
+    height: 150px;
+    background-image: url(../img/SkyObjects/Birds.gif);
+    background-size: 100%;
+    z-index: 6; 
+    background-repeat: no-repeat;
+    position: absolute;
+}
+
+/*============= Задній фон "небо" (Sky) на нижній рівень =====*/
+#backgroundSky{
+    z-index: 4;
+}
+
+/*============= Задній фон "верх" (Top) ===============*/
+#backgroundTop{
+	width: 100%;
+	height: 400px;
+	background-image: url(../img/Background/BackgroundTop.png);
+	background-size: auto;
+	background-position: 0 0;
+	background-repeat: repeat-x;
+	position: absolute;
+	bottom: 250px;
+	animation: animateTop 32s linear infinite;
+	z-index: 2;
+}
+
+/*============= Задній фон "середина" (Middle) ========*/
+#backgroundMiddle{
+	width: 100%;
+	height: 241px;
+	background-image: url(../img/Background/BackgroundMiddle.png);
+	background-size: auto;
+	background-position: 0 0;
+	background-repeat: repeat-x;
+	position: absolute;
+	bottom: 95px;
+	animation: animateMiddle 22s linear infinite;
+	z-index: 3;
+}
+
+/*============= Задній фон "низ" (Bottom) =============*/
+#backgroundBottom{
+	width: 100%;
+	height: 192px;
+	background-image: url(../img/Background/BackgroundBottom.png);
+	background-size: auto;
+	background-position: 0 0;
+	background-repeat: repeat-x;
+	position: absolute;
+	bottom: -20px;
+	animation: animateBottom 10s linear infinite;
+	z-index: 4;
+}
+
+/*============= розтягування картинок задніх фонів згідно їх розмірів */
+@keyframes animateTop{
+	from{
+		background-position: 0 0;
+	}
+	to{
+		background-position: -1823px 0;
+	}
+}
+
+@keyframes animateMiddle{
+	from{
+		background-position: 0 0;
+	}
+	to{
+		background-position: -1922px 0;
+	}
+}
+@keyframes animateBottom{
+	from{
+		background-position: 0 0;
+	}
+	to{
+		background-position: -1925px 0;
+	}
+}
+
+/*============= ОБ'ЄКТ "літак" у ігровому полі ===========*/
+#plane{
+	width: 110px;
+	height: 100px;
+	background-image: url(../img/Plane/Plane3.gif);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 140px;
+	left: -150px;
+	z-index: 5;
+/*	transition: all 0s;*/
+    transition: 3s all;
+
+}
+@keyframes flash {
+	0% { opacity: 1; } 
+	50% { opacity: .1; } 
+	100% { opacity: 1; }
+}
+
+/*============= Інформаційний блок =======================*/
+#info_block{
+	width: 100%;
+	height: auto;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+/*============= ІНФОРМАЦІЯ "рахунок гри" =================*/
+#score {
+	font-size: 22px;
+	color: yellow;
+	font-weight: bold;
+	font-family: 'Exo 2', sans-serif; 				/* підключаємо шрифт з Google Fonts - Exo2 для виведення рахунку*/
+	text-shadow: -2px 2px 1px #ababab; 				/* параметри тіні шрифта - X,Y,blur,color */
+	position: absolute;								/* позиціонування */
+	top: 16px;										/* відстань зверху */
+	left: 20px;										/* відстань зліва */
+	z-index: 5;										/* зазначаємо послідовність з іншими шарами індикатора рахунку гри */
+}
+
+/*============= ІНФОРМАЦІЯ "стан здоров'я" =================*/
+#health{
+	font-size: 22px;
+	color: yellow;
+	font-weight: bold;
+	font-family: 'Exo 2', sans-serif; 				/* підключаємо шрифт з Google Fonts - Exo2 для виведення рахунку*/
+	text-shadow: -2px 2px 1px #ababab; 				/* параметри тіні шрифта - X,Y,blur,color */
+	position: absolute;								/* позиціонування */
+	top: 40px;										/* відстань зверху */
+	left: 20px;										/* відстань зліва */
+	z-index: 5;	
+}
+
+/*============= ІНФОРМАЦІЯ "рівень пального" ===============*/
+#fuel{
+	font-size: 22px;
+	color: yellow;
+	font-weight: bold;
+	font-family: 'Exo 2', sans-serif; 				/* підключаємо шрифт з Google Fonts - Exo2 для виведення рахунку*/
+	text-shadow: -2px 2px 1px #ababab; 				/* параметри тіні шрифта - X,Y,blur,color */
+	position: absolute;								/* позиціонування */
+	top: 64px;										/* відстань зверху */
+	left: 20px;										/* відстань зліва */
+	z-index: 5;	
+}
+
+/*============= ІНФОРМАЦІЯ "кількість життів" ==============*/
+#lifes {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	z-index: 5;										/* робимо індикатор життів поверх випадаючих куль */
+}
+
+/*============= вигляд одного "життя" =================*/
+#lifes span {
+	width: 40px;
+	height: 40px;
+	background-image: url(../img/Bonuses/NewLife2.gif); 			/* прописуємо вигляд індикатора життів */
+	background-size: 100%; 								/* вписуємо картинку в розмір круга */
+	display: block;
+	float: left;
+}
+
+/*== опис клавіш управління звуковими ефектами ON/OFF (до самого низу) ==*/
+#sound_field{
+    width: 0px;
+    height: 0px;
+}
+
+buttonSound {
+    position: relative;
+    display: inline-block;
+    top: 0px;
+    left: 0px;
+    border-radius: 100px;
+    outline: none;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, .3) inset, 0 1px 1px rgba(255, 255, 255, .2);
+    background: #8a7b78 linear-gradient(#8a7b78, #cdcdcd);
+    box-shadow: 5px 5px 3px black;
+}
+
+.buttonSound span {
+    position: relative;
+    display: block;
+    width: 10px;
+    height: 60px;
+    border: solid transparent;
+    border-width: 0 0 0 50px;
+    border-radius: 100px;
+    outline: none;
+    overflow: hidden;
+}
+
+.buttonSound:after {
+    content: "\266B";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 200%;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: #2e7ebd 0 1px 2px;
+    color: #fff;
+    margin: auto;
+    border-radius: 100px;
+    background: #75a7cd linear-gradient(#75a7cd, #5084a8);
+    box-shadow: 0 2px 2px rgba(255, 255, 255, .5) inset, 0 -2px 2px rgba(0, 0, 0, .3) inset, 0 0 2px 2px rgba(0, 0, 0, .3);
+}
+
+buttonSound2 {
+    position: relative;
+    display: inline-block;
+    top: 0px;
+    left: 0px;
+    border-radius: 100px;
+    outline: none;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, .3) inset, 0 1px 1px rgba(255, 255, 255, .2);
+    background: #8a7b78 linear-gradient(#8a7b78, #cdcdcd);
+    box-shadow: 5px 5px 3px black;
+}
+
+.buttonSound2 span {
+    position: relative;
+    display: block;
+    width: 10px;
+    height: 60px;
+    border: solid transparent;
+    border-width: 0 0 0 50px;
+    border-radius: 100px;
+    outline: none;
+    overflow: hidden;
+}
+
+.buttonSound2:after {
+    content: "\2708";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 200%;
+    text-align: center;
+    text-shadow: #2e7ebd 0 1px 2px;
+    color: #fff;
+    margin: auto;
+    border-radius: 100px;
+    background: #75a7cd linear-gradient(#75a7cd, #5084a8);
+    box-shadow: 0 2px 2px rgba(255, 255, 255, .5) inset, 0 -2px 2px rgba(0, 0, 0, .3) inset, 0 0 2px 2px rgba(0, 0, 0, .3);
+}
+
+buttonSound3 {
+    position: relative;
+    display: inline-block;
+    top: 0px;
+    left: 0px;
+    border-radius: 100px;
+    outline: none;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, .3) inset, 0 1px 1px rgba(255, 255, 255, .2);
+    background: #8a7b78 linear-gradient(#8a7b78, #cdcdcd);
+    box-shadow: 5px 5px 3px black;
+}
+
+.buttonSound3 span {
+    position: relative;
+    display: block;
+    width: 10px;
+    height: 60px;
+    border: solid transparent;
+    border-width: 0 0 0 50px;
+    border-radius: 100px;
+    outline: none;
+    overflow: hidden;
+}
+
+.buttonSound3:after {
+    content: "\1F4E2";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 200%;
+    text-align: center;
+    text-shadow: #2e7ebd 0 1px 2px;
+    color: #fff;
+    margin: auto;
+    border-radius: 100px;
+    background: #75a7cd linear-gradient(#75a7cd, #5084a8);
+    box-shadow: 0 2px 2px rgba(255, 255, 255, .5) inset, 0 -2px 2px rgba(0, 0, 0, .3) inset, 0 0 2px 2px rgba(0, 0, 0, .3);
+}
+
+buttonControls {
+    position: relative;
+    display: inline-block;
+    top: 30px;
+    left: 0px;
+    border-radius: 100px;
+    outline: none;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, .3) inset, 0 1px 1px rgba(255, 255, 255, .2);
+    background: #8a7b78 linear-gradient(#8a7b78, #cdcdcd);
+    box-shadow: 5px 5px 3px black;
+}
+
+.buttonControls span {
+    position: relative;
+    display: block;
+    width: 10px;
+    height: 60px;
+    border: solid transparent;
+    border-width: 0 0 0 50px;
+    border-radius: 100px;
+    outline: none;
+    overflow: hidden;
+}
+
+.buttonControls:after {
+    content: "\2692";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 200%;
+    text-align: center;
+    text-shadow: #2e7ebd 0 1px 2px;
+    color: #fff;
+    margin: auto;
+    border-radius: 100px;
+    background: #75a7cd linear-gradient(#75a7cd, #5084a8);
+    box-shadow: 0 2px 2px rgba(255, 255, 255, .5) inset, 0 -2px 2px rgba(0, 0, 0, .3) inset, 0 0 2px 2px rgba(0, 0, 0, .3);
+}

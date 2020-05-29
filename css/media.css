@@ -1,0 +1,37 @@
+/* === способи прив'язки зображення під роздільну здатність дисплея ===*/
+
+@media screen and (max-width: 1920px) and (min-width: 1270px) {
+	#game_field{
+		height:900px;
+	}
+	#start_game{		
+		background-size: 125%;
+		background-position: 0 -250px;
+	}
+}
+
+@media screen and (max-width: 1505px) and (min-width: 1270px) {	
+	#game_field{
+		background-size: 120%;
+		height: 850px;
+	}	
+	#start_game{
+		background-position: 0 0px;
+	}
+}
+
+@media screen and (max-width: 1450px) and (min-width: 1270px) {
+	#game_field{
+		background-size: 115%;
+		height: 650px;
+	}
+	#game_over{
+		background-position: 0 -100px;
+	}
+}
+
+@media screen and (max-width: 1385px) and (min-width: 1270px) {
+	#start_game{
+		background-size: 110%;
+	}
+}
